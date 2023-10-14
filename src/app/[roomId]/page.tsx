@@ -62,14 +62,13 @@ export default function Room({ params }: any) {
     };
     useEffect(() => {
 
+        channel.on("MemberJoined", handleUserJoined)
+        client.on("MessageFromPeer", handleMessageFromPeer)
+        channel.on("MemberLeft", handleMemberLeft)
         client.login({ uid: userId, token }).then(async () => {
             await channel.join()
-
-            channel.on("MemberJoined", handleUserJoined)
-            client.on("MessageFromPeer", handleMessageFromPeer)
-            channel.on("MemberLeft", handleMemberLeft)
+        getVideo();
             // get media devices access
-            getVideo();
 
         })
 

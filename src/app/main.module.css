@@ -4,9 +4,17 @@
     font-weight: bold;
 
 }
-
+.main{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(14,14,153,0.28335084033613445) 24%, rgba(0,212,255,1) 100%);
+}
 .leftDiv{
-    width: 50%;
+    width: max-content;
     display: flex;
     flex-direction: row;
     padding: 30px;
@@ -15,26 +23,14 @@
 
 .leftDiv button{
     width: max-content;
+    box-sizing: border-box;
     padding: 10px;
-    height: 52px;
- 
-align-content: center;
-align-self: center;
+    height: 50px;
 }
 .forms{
-    width: 100%;
+    width: max-content;
     display: grid;
-   grid-template-columns: 3fr 2fr;
-   gap: 10px;
-   align-items: last baseline;
-  
-    
+    gap: 10px;
+    grid-template-columns: 4fr 1fr;
+   justify-content: baseline;
 }
-
-.forms button{
-    width: 90px;
-    height: 38px;
- padding: 10px;
-    align-self: last baseline;
-}
-
