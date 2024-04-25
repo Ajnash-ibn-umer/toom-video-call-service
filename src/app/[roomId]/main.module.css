@@ -4,15 +4,12 @@
   position: relative; 
     width: 100%; 
     height: 100vh; 
-    background: rgb(97, 97, 97);
+    background: rgb(255, 255, 255);
   
 }
 .videos{
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2em;
     position: relative;
 }
 
@@ -27,7 +24,7 @@ box-shadow: 0 19px 51px 0 rgba(0,0,0,0.16), 0 14px 19px 0 rgba(0,0,0,0.07);
 }
 .user1{
     width: max-content;
-height: 300px;
+height: 200px;
     position: absolute;
    right: 5px !important;
     bottom: 30px;
@@ -36,8 +33,8 @@ height: 300px;
 
 .user2{
     position: fixed;
-   width: 80%;
-   height: 80%;
+   width: 90%;
+   height: 90%;
    left: 0;
    top: 0;
    right: 0;
@@ -48,31 +45,40 @@ height: 300px;
 }
 .controls{
     /* position: static; */
-    width: 500px;
+    background-color: rgba(0, 0, 0, 0.437);
+    width: max-content;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    height: 100px;
+    gap: 10px;
+    height: max-content;
+    padding: .4em .4em;
     /* background-color: red; */
-    bottom: 0;
     align-self: flex-end;
     justify-content: center;
     position: fixed;
     left: 50%;
-    bottom: 20px;
+    bottom: 5.5em;
     transform: translate(-50%, -50%);
     margin: 0 auto;
+    border-radius: 30px 30px 30px 30px;
+
  
 }
 
 .controlBtn{
-    width: 80px;
-    height: 80px;
-    background-color: rgb(3, 155, 72);
+    width: 30px;
+    height: 30px;
+    background-color: rgba(63, 63, 63, 0.327);
     border-radius: 60%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: rgb(255, 255, 255);
     cursor: pointer;
+    padding: .3em;
+}
+.controlBtn span {
+    color: rgb(252, 252, 252);
+    font-size: 1em;
+
 }

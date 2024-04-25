@@ -5,16 +5,12 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import styles from "./main.module.css";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
+import TopBar from "@/components/NavBar";
+import LandingPage from "@/components/LandingPage";
 
-const user = {
-  name: "Tom Cook",
-  imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
-
-function classNames(...classes: any[]) {
-  return classes.filter(Boolean).join(" ");
-}
+// function classNames(...classes: any[]) {
+//   return classes.filter(Boolean).join(" ");
+// }
 
 export default function Main() {
   const router = useRouter();
@@ -29,10 +25,16 @@ export default function Main() {
     const newRoomId = Math.floor(Math.random() * 1000000000);
     router.push(`/${newRoomId}`);
   };
+
+
+
   return (
     <>
       <main className={styles.main}>
-        <div className={styles.leftDiv}>
+        <TopBar />
+
+        <LandingPage/>
+        {/* <div className={styles.leftDiv}>
           <button
             onClick={handleNewMeet}
             className="bg-green-600  hover:bg-green-700 text-white font-bold  rounded"
@@ -58,7 +60,7 @@ export default function Main() {
               <div></div>
             </div>
           </form>
-        </div>
+        </div> */}
       </main>
     </>
   );

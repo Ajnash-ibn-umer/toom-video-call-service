@@ -32,7 +32,7 @@ export default function Room({ params }: any) {
     const [cameraEnabled, setCameraEnabled] = useState<boolean>(true)
 
     console.log('roomid', roomId);
-
+console.log({cameraEnabled})
     const useChannel = createChannel(roomId)
 
     const channel = useChannel(client)
@@ -200,10 +200,11 @@ export default function Room({ params }: any) {
 
             videoTrack.enabled = false;
             // micEnabled=false
+            setCameraEnabled(false)
 
         } else {
             videoTrack.enabled = true;
-            // setCameraEnabled(true)
+            setCameraEnabled(true)
 
 
         }
@@ -229,19 +230,37 @@ export default function Room({ params }: any) {
     window.addEventListener("beforeunload", leaveChannel)
     return (
         <main className={styles.main}>
-            <div className={styles.videos} id='videos'>
+        <div className={styles.videos} id='videos'>
 
-                <video ref={videoRef} className={`${styles.videoPlayer} ${styles.user1}`} id='user1' autoPlay playsInline ></video>
-                <video ref={remoteVideoRef} className={`${styles.videoPlayer} ${styles.user2}`} id='user2' autoPlay playsInline ></video>
+            <video ref={videoRef} className={`${styles.videoPlayer} ${styles.user1}`} id='user1' autoPlay playsInline ></video>
+            <video ref={remoteVideoRef} className={`${styles.videoPlayer} ${styles.user2}`} id='user2' autoPlay playsInline ></video>
 
-            </div>
-            <div className={styles.controls}>
-                <div className={styles.controlBtn} onClick={handleCamera}  >{ cameraEnabled ? <BsFillCameraVideoFill size={30} /> :<BsFillCameraVideoOffFill size={30} />}</div>
-                <div className={styles.controlBtn} onClick={handleMic}  >{ micEnabled? <BsFillMicFill size={30} /> :<BsFillMicMuteFill size={30} />}</div>
-                <div className={styles.controlBtn} onClick={handleEndCall} style={{ background: "red" }} ><BsFillTelephoneFill size={30} /></div>
+        </div>
+        <div className={styles.controls}>
+            <div className={styles.controlBtn} onClick={handleCamera}  >{ cameraEnabled ? <span className="material-symbols-outlined">videocam</span> :<span className="material-symbols-outlined">videocam_off</span>}</div>
+            <div className={styles.controlBtn} onClick={handleMic}  >{ micEnabled?<span className="material-symbols-outlined">mic</span> :<span className="material-symbols-outlined">mic_off</span>}</div>
+            <div className={styles.controlBtn} onClick={handleEndCall}  ><span className="material-symbols-outlined">logout</span></div>
 
 
-            </div>
-        </main>
+        </div>
+    </main>
+
+
+
+        // <main className={styles.main}>
+        //     <div className={styles.videos} id='videos'>
+
+        //         <video ref={videoRef} className={`${styles.videoPlayer} ${styles.user1}`} id='user1' autoPlay playsInline ></video>
+        //         <video ref={remoteVideoRef} className={`${styles.videoPlayer} ${styles.user2}`} id='user2' autoPlay playsInline ></video>
+
+        //     </div>
+        //     <div className={styles.controls}>
+        //         <div className={styles.controlBtn} onClick={handleCamera}  >{ cameraEnabled ? <BsFillCameraVideoFill size={30} /> :<BsFillCameraVideoOffFill size={30} />}</div>
+        //         <div className={styles.controlBtn} onClick={handleMic}  >{ micEnabled? <BsFillMicFill size={30} /> :<BsFillMicMuteFill size={30} />}</div>
+        //         <div className={styles.controlBtn} onClick={handleEndCall} style={{ background: "red" }} ><BsFillTelephoneFill size={30} /></div>
+
+
+        //     </div>
+        // </main>
     )
 }
