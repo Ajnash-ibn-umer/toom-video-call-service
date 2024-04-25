@@ -1,7 +1,14 @@
 import Image from "next/image";
 import styles from "./style.module.css";
 import bannerImage from "../../../public/1618_U1RVRElPIEtBVCAzNTQtMTQ4.jpg";
-export default function LandingPage({}) {
+
+interface LandingPageProps{
+  handleSubmit:(e:any)=>any,
+  handleNewMeet:()=>any,
+
+}
+
+export default function LandingPage({handleSubmit,handleNewMeet}:LandingPageProps) {
   return (
     <>
       <main className={styles.mainSec}>
@@ -19,8 +26,8 @@ export default function LandingPage({}) {
               </span>
             </div>
             <div className={styles.formDiv}>
-              <button className={styles.newMeetBtn}>+ New Meeting</button>
-              <form>
+              <button  onClick={handleNewMeet} className={styles.newMeetBtn}>+ New Meeting</button>
+              <form onSubmit={handleSubmit}>
                 <div className={styles.forms}>
                   <input
                     placeholder="Room Id"
@@ -30,7 +37,7 @@ export default function LandingPage({}) {
                     className={styles.inputField}
                   />
 
-                  <button type="submit" className={styles.joinBtn}>
+                  <button type="submit"  className={styles.joinBtn}>
                     Join
                   </button>
                   <div></div>

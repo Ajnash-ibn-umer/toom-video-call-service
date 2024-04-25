@@ -33,7 +33,7 @@ export default function Main() {
       <main className={styles.main}>
         <TopBar />
 
-        <LandingPage/>
+        <LandingPage  handleSubmit={handleSubmit} handleNewMeet={handleNewMeet} />
         {/* <div className={styles.leftDiv}>
           <button
             onClick={handleNewMeet}
