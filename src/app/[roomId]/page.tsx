@@ -6,7 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import { createChannel, createClient } from "agora-rtm-react";
 import { useRouter } from "next/navigation";
 
-const APP_ID = "08a276257c5141d1abdbdf81b4bc016d";
+const APP_ID :string= process.env.NEXT_PUBLIC_APP_ID as string
+console.log({APP_ID})
 const useClient = createClient(APP_ID);
 let token: string;
 // create ICE  server
@@ -105,7 +106,12 @@ export default function Room({ params }: any) {
 
     // handle initial error , when local stream is null
     if (!localStream) {
-      getVideo();
+        navigator.mediaDevices
+        .getUserMedia({ video: true, audio: true })
+        .then((currentStream) => {
+          setLocalStream(currentStream);
+          videoRef.current.srcObject = currentStream;
+        });
     }
 
     localStream.getTracks().forEach((track: any) => {
@@ -253,19 +259,5 @@ export default function Room({ params }: any) {
       </div>
     </main>
 
-    // <main className={styles.main}>
-    //     <div className={styles.videos} id='videos'>
-
-    //         <video ref={videoRef} className={`${styles.videoPlayer} ${styles.user1}`} id='user1' autoPlay playsInline ></video>
-    //         <video ref={remoteVideoRef} className={`${styles.videoPlayer} ${styles.user2}`} id='user2' autoPlay playsInline ></video>
-
-    //     </div>
-    //     <div className={styles.controls}>
-    //         <div className={styles.controlBtn} onClick={handleCamera}  >{ cameraEnabled ? <BsFillCameraVideoFill size={30} /> :<BsFillCameraVideoOffFill size={30} />}</div>
-    //         <div className={styles.controlBtn} onClick={handleMic}  >{ micEnabled? <BsFillMicFill size={30} /> :<BsFillMicMuteFill size={30} />}</div>
-    //         <div className={styles.controlBtn} onClick={handleEndCall} style={{ background: "red" }} ><BsFillTelephoneFill size={30} /></div>
-
-    //     </div>
-    // </main>
   );
 }
